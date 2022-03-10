@@ -9,6 +9,7 @@ from datetime import datetime
 from models.base_model import Base
 from models.base_model import BaseModel
 from models.city import City
+<<<<<<< HEAD
 from models.state import State
 from models.engine.db_storage import DBStorage
 from models.engine.file_storage import FileStorage
@@ -200,3 +201,30 @@ class TestCity(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+=======
+import os
+
+
+class test_City(test_basemodel):
+    """ tests for city """
+
+    def __init__(self, *args, **kwargs):
+        """ init the test class"""
+        super().__init__(*args, **kwargs)
+        self.name = "City"
+        self.value = City
+
+    def test_state_id(self):
+        """ testing state_id type """
+        new = self.value()
+        self.assertEqual(type(new.state_id), str if
+                         os.getenv('HBNB_TYPE_STORAGE') != 'db' else
+                         type(None))
+
+    def test_name(self):
+        """ testing name type"""
+        new = self.value()
+        self.assertEqual(type(new.name), str if
+                         os.getenv('HBNB_TYPE_STORAGE') != 'db' else
+                         type(None))
+>>>>>>> 269cb70efdd44736bfe5a03f9fc6aadc57c24591

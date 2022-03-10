@@ -13,6 +13,7 @@ from models.city import City
 from models.user import User
 from models.place import Place
 from models.review import Review
+<<<<<<< HEAD
 from models.engine.db_storage import DBStorage
 from models.engine.file_storage import FileStorage
 from sqlalchemy.exc import OperationalError
@@ -199,3 +200,37 @@ class TestReview(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+=======
+import os
+
+
+class test_review(test_basemodel):
+    """ review test class"""
+
+    def __init__(self, *args, **kwargs):
+        """ review class init"""
+        super().__init__(*args, **kwargs)
+        self.name = "Review"
+        self.value = Review
+
+    def test_place_id(self):
+        """ testing review place_id attr"""
+        new = self.value()
+        self.assertEqual(type(new.place_id), str if
+                         os.getenv('HBNB_TYPE_STORAGE') != 'db' else
+                         type(None))
+
+    def test_user_id(self):
+        """ testing review user_id attr"""
+        new = self.value()
+        self.assertEqual(type(new.user_id), str if
+                         os.getenv('HBNB_TYPE_STORAGE') != 'db' else
+                         type(None))
+
+    def test_text(self):
+        """ testing review text attr"""
+        new = self.value()
+        self.assertEqual(type(new.text), str if
+                         os.getenv('HBNB_TYPE_STORAGE') != 'db' else
+                         type(None))
+>>>>>>> 269cb70efdd44736bfe5a03f9fc6aadc57c24591

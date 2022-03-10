@@ -9,6 +9,7 @@ from datetime import datetime
 from models.base_model import Base, BaseModel
 from models.city import City
 from models.state import State
+<<<<<<< HEAD
 from models.engine.db_storage import DBStorage
 from models.engine.file_storage import FileStorage
 from sqlalchemy.exc import OperationalError
@@ -178,3 +179,23 @@ class TestState(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+=======
+import os
+
+
+class test_state(test_basemodel):
+    """ states test class"""
+
+    def __init__(self, *args, **kwargs):
+        """ state test class init"""
+        super().__init__(*args, **kwargs)
+        self.name = "State"
+        self.value = State
+
+    def test_name3(self):
+        """ testing state name attr"""
+        new = self.value()
+        self.assertEqual(type(new.name), str if
+                         os.getenv('HBNB_TYPE_STORAGE') != 'db' else
+                         type(None))
+>>>>>>> 269cb70efdd44736bfe5a03f9fc6aadc57c24591

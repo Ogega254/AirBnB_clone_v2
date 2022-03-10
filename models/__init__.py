@@ -1,23 +1,15 @@
 #!/usr/bin/python3
-import os
-from models.base_model import BaseModel
-from models.base_model import Base
-from models.user import User
-from models.amenity import Amenity
-from models.city import City
-from models.place import Place
-from models.state import State
-from models.review import Review
-from models.engine import file_storage
-from models.engine import db_storage
+"""This module instantiates an instance of the Storage will be used"""
 
+from os import getenv
 
-try:
-    if os.environ['HBNB_TYPE_STORAGE'] == "db":
-        storage = db_storage.DBStorage()
-    else:
-        raise KeyError
-except KeyError:
-    storage = file_storage.FileStorage()
+storage_type = getenv('HBNB_TYPE_STORAGE')
+
+if storage_type == 'db':
+    from models.engine.db_storage import DBStorage
+    storage = DBStorage()
+else:
+    from models.engine.file_storage import FileStorage
+    storage = FileStorage()
 
 storage.reload()

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <HTML lang="en">
+<<<<<<< HEAD
     <HEAD>
         <TITLE>HBNB</TITLE>
     </HEAD>
@@ -11,4 +12,20 @@
         {% endfor %}
         </UL>
     </BODY>
+=======
+
+<HEAD>
+      <TITLE>HBNB</TITLE>
+</HEAD>
+
+<BODY>
+      <H1>States</H1>
+      <UL>
+            {% for state in states.values()|sort(attribute="name") %}
+            <LI>{{ state.id }}: <B>{{ state.name }}</B></LI>
+            {% endfor %}
+      </UL>
+</BODY>
+
+>>>>>>> 269cb70efdd44736bfe5a03f9fc6aadc57c24591
 </HTML>

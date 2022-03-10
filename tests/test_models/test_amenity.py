@@ -9,6 +9,7 @@ from datetime import datetime
 from models.base_model import Base
 from models.base_model import BaseModel
 from models.amenity import Amenity
+<<<<<<< HEAD
 from models.engine.db_storage import DBStorage
 from models.engine.file_storage import FileStorage
 from sqlalchemy.exc import OperationalError
@@ -170,3 +171,23 @@ class TestAmenity(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+=======
+import os
+
+
+class test_Amenity(test_basemodel):
+    """ amenity test class"""
+
+    def __init__(self, *args, **kwargs):
+        """inti the test class """
+        super().__init__(*args, **kwargs)
+        self.name = "Amenity"
+        self.value = Amenity
+
+    def test_name2(self):
+        """testing name type """
+        new = self.value()
+        self.assertEqual(type(new.name), str if
+                         os.getenv('HBNB_TYPE_STORAGE') != 'db' else
+                         type(None))
+>>>>>>> 269cb70efdd44736bfe5a03f9fc6aadc57c24591
