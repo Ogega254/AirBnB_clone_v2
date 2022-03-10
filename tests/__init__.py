@@ -1,6 +1,4 @@
 #!/usr/bin/python3
-<<<<<<< HEAD
-=======
 """Tests for the AirBnb clone modules.
 """
 import os
@@ -66,4 +64,3 @@ def write_text_file(file_name, text):
     """
     with open(file_name, mode='w') as file:
         file.write(text)
->>>>>>> 269cb70efdd44736bfe5a03f9fc6aadc57c24591
