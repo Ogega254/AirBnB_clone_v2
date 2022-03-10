@@ -1,19 +1,21 @@
 #!/usr/bin/python3
-"""generates a .tgz archive from the contents of the web_static folder"""
+'''Fabric script to generate .tgz archive'''
 
-from datetime import datetime
 from fabric.api import local
-from os.path import isdir
+from datetime import datetime
+
+from fabric.decorators import runs_once
 
 
+@runs_once
 def do_pack():
-    """generates a .tgz archive"""
-    try:
-        if isdir("versions") is False:
-            local("mkdir versions")
-        date = datetime.now().strftime("%Y%m%d%H%M%S")
-        file = "versions/web_static_{}.tgz".format(date)
-        local("tar -cvzf {} web_static".format(file))
-        return file
-    except:
+    '''generates .tgz archive from the contents of the web_static folder'''
+    local("mkdir -p versions")
+    path = ("versions/web_static_{}.tgz"
+            .format(datetime.strftime(datetime.now(), "%Y%m%d%H%M%S")))
+    result = local("tar -cvzf {} web_static"
+                   .format(path))
+
+    if result.failed:
         return None
+    return path
